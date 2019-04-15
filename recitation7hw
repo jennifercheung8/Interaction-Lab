@@ -1,0 +1,70 @@
+int d = 400;
+int a = 4;
+int c;
+int cc = 1;
+int x = 300;
+int y = 300;
+
+
+void setup() {
+  size(600, 600);
+  pixelDensity(2);
+  //frameRate(60);
+  rectMode(CENTER);
+  colorMode(HSB, 100);
+}
+
+void keyPressed(){
+
+if (key == CODED){
+ 
+if (keyCode == UP){ 
+  if (y > 0 + d/2) {
+    y = y- 10;
+  }
+} 
+if (keyCode == DOWN){
+  if (y < height - d/2) {
+y = y + 10;
+  }
+}
+if (keyCode == LEFT){
+  if (x > 0 + d/2) {
+x = x - 10;
+  }
+}
+if (keyCode == RIGHT){ 
+  if (x < width - d/2) {
+x = x + 10;
+  }
+}
+}
+}
+
+
+void draw() {
+  background(100);
+  noFill();
+  stroke(c, 100, 100);
+  strokeWeight(20);
+  ellipse(x, y, d, d);
+  
+  d = d + a;
+  if ( d < 100) {
+    a = abs(a);
+    d = d + a;
+  }
+  if (d > 400){
+    a = -abs(a);
+    d=d+a;
+  }
+  
+  c = c + cc;
+  if (c > 100) {
+    cc = -abs(cc);
+  }
+  if (c < 0) {
+    cc = abs(cc);
+  }
+  
+}
