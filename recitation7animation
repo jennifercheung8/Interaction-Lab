@@ -1,0 +1,100 @@
+int x = 0;
+int y = 0;
+
+float rot = PI/2.5;
+
+void setup() {
+  size (600, 800);
+  pixelDensity(2);
+}
+
+void draw() {
+  background (20, 23, 56);
+  drawWCircle(mouseX, mouseY); 
+  drawSCircle();
+  drawRCircle();
+  drawLine();
+  println(radians(frameCount)*rot);
+}
+
+void keyPressed() {
+  if (key == CODED) {
+    if (keyCode == LEFT) {
+      rot = abs(rot);
+    } else if (keyCode == RIGHT) {
+      rot = -abs(rot);
+    }
+  }
+}
+
+void drawWCircle(int x, int y) {
+  pushMatrix();
+  translate(358, 270);
+  //translate(mouseX, mouseY);
+  rotate(radians(frameCount)*rot);
+
+  fill (232, 227, 222);
+  ellipse (120-358, 660-270, 135, 135);
+  fill (232, 203, 88);
+  noStroke();
+  rect (150-358, 610-270, 50, 10);
+  rect (130-358, 630-270, 80, 10);
+  stroke (232, 227, 222);
+  line (180-358, 685-270, 358-358, 270-270);
+  line (358-358, 270-270, 10-358, 810-270);
+  popMatrix();
+}
+
+void drawSCircle() {
+  //scircle1
+  fill (232, 227, 222);
+  ellipse (330, 270, 60, 60);
+
+  fill (216, 211, 205);
+  noStroke();
+  //scircle2
+  ellipse (333, 273, 50, 50);
+
+  fill (186, 181, 174, 80);
+  //scircle3
+  ellipse (336, 276, 40, 40);
+
+  fill (84, 83, 81, 80);
+  //scircle4
+  ellipse (324, 264, 20, 20);
+}
+
+void drawRCircle() {
+  fill (242, 232, 232);
+  //rcirclewhite
+  ellipse (120, 160, 130, 130);
+
+  fill (45, 5, 5);
+  //rcircle1
+  ellipse (120, 164, 130, 130);
+
+  fill (35, 2, 9);
+  //rcircle2
+  ellipse (117, 160, 120, 120);
+
+  fill (51, 4, 14);
+  //rcircle3
+  ellipse (110, 150, 90, 90);
+
+  //rcircledot
+  fill (132, 72, 85);
+  ellipse (120, 130, 4, 3);
+  ellipse (110, 120, 3, 3);
+  ellipse (87, 136, 3, 2);
+  ellipse (120, 123, 3, 2);
+  ellipse (126, 128, 3, 3);
+  ellipse (90, 150, 3, 2);
+}
+
+void drawLine() {
+  //lines
+  stroke (232, 227, 222);
+  line (358, 270, 195, 410);
+  line (195, 410, 610, 600);
+  line (610, 700, -10, 10);
+}
